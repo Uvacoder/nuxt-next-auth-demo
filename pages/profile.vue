@@ -1,20 +1,32 @@
 <template>
     <div>
       <pre>{{ JSON.stringify(session, null, 2) }}</pre>
-        <a href="/api/auth/signout">Sign Out</a>
+    <!-- <button @click="test">test</button> -->
+    <button @click="signOut">sign out</button>
     </div>
 </template>
 
 <script>
 import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { getSession, useSession, signOut } from '~/modules/next-auth/client';
 
 export default defineComponent({
-    middleware: 'authenticated',
+    middleware: 'auth',
     setup(_props, { root: { $store } }) {
         const session = computed(() => $store.state.session)
+        const [session2, loading] = useSession()
+
+        const test = async () => {
+            console.log(session2.value)
+            console.log(loading.value)
+            const result = await getSession()
+            console.log(result)
+        }
 
         return {
-            session
+            session,
+            test,
+            signOut
         }
     }
 })

@@ -1,3 +1,5 @@
+import Providers from 'next-auth/providers';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,11 +38,13 @@ export default {
   ],
 
   serverMiddleware: [
-    { path: '/api', handler: '~/server/index.js' },
+    // { path: '/api', handler: '~/server/index.js' },
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@modules/next-auth'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -48,10 +52,23 @@ export default {
   },
 
   privateRuntimeConfig: {
+    // nextAuthUrl: process.env.NEXTAUTH_URL
+  },
+
+  publicRuntimeConfig: {
     nextAuthUrl: process.env.NEXTAUTH_URL
   },
 
   vite: {
     ssr: true
+  },
+
+  nextAuth: {
+    providers: [
+      Providers.GitHub({
+          clientId: process.env.GITHUB_CLIENT_ID,
+          clientSecret: process.env.GITHUB_CLIENT_SECRET
+      }),
+    ],
   }
 }

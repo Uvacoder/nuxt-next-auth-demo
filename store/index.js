@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getSession } from "~/modules/next-auth/client";
 
 export const state = () => ({
     session: null
@@ -11,18 +11,10 @@ export const mutations = {
 }
 
 export const actions = {
-    async nuxtServerInit({ commit }, { req, $config }) {
+    async nuxtServerInit({ commit }, { req }) {
         try {
-            const { data } = await axios.get(`${$config.nextAuthUrl}/api/auth/session`, {
-                headers: {
-                    cookie: req.headers.cookie
-                }
-            });
-            if (!data || !Object.keys(data).length) {
-                commit('SET_SESSION', null);
-            } else {
-                commit('SET_SESSION', data);
-            }
+            const session = await getSession({ req })
+            commit('SET_SESSION', session);
         } catch (e) {
             console.error(e);
             commit('SET_SESSION', null);
