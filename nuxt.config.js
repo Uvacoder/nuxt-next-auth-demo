@@ -51,13 +51,9 @@ export default {
   build: {
   },
 
-  privateRuntimeConfig: {
-    // nextAuthUrl: process.env.NEXTAUTH_URL
-  },
+  privateRuntimeConfig: {},
 
-  publicRuntimeConfig: {
-    nextAuthUrl: process.env.NEXTAUTH_URL
-  },
+  publicRuntimeConfig: {},
 
   vite: {
     ssr: true
