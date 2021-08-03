@@ -9,7 +9,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
-import { getProviders, signIn } from '~/modules/next-auth/client';
+import { getProviders, signIn } from 'nuxt-next-auth';
 
 export default defineComponent({
   middleware: 'guest',

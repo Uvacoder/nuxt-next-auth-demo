@@ -33,18 +33,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    'nuxt-vite',
     '@nuxtjs/composition-api/module'
   ],
 
-  serverMiddleware: [
-    // { path: '/api', handler: '~/server/index.js' },
-  ],
+  serverMiddleware: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios',
-    '@modules/next-auth'
+    'nuxt-next-auth/module'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -54,10 +50,6 @@ export default {
   privateRuntimeConfig: {},
 
   publicRuntimeConfig: {},
-
-  vite: {
-    ssr: true
-  },
 
   nextAuth: {
     providers: [
