@@ -36,7 +36,10 @@ export default {
     '@nuxtjs/composition-api/module'
   ],
 
-  serverMiddleware: [],
+  serverMiddleware: [{
+    path: '/api/protected',
+    handler: '~/api/index.js'
+  }],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

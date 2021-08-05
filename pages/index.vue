@@ -1,28 +1,8 @@
 <template>
   <div>
-    <h1>Nuxt + NextAuth Integration</h1>
-    <div v-for="provider in Object.values(providers)" :key="provider.id">
-      <button @click="signIn(provider.id)">Sign in with {{ provider.name }}</button>
-    </div>
+    <h1>Nuxt + NextAuth.js Example</h1>
+    <p>
+      This is an example site to demonstrate how to use <a href="https://nuxtjs.org/">Nuxt.js</a> with <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
+    </p>
   </div>
 </template>
-
-<script>
-import { defineComponent } from '@nuxtjs/composition-api';
-import { getProviders, signIn } from 'nuxt-next-auth';
-
-export default defineComponent({
-  middleware: 'guest',
-  setup() {
-    return {
-      signIn
-    }
-  },
-  async asyncData() {
-    const providers = await getProviders()
-    return {
-      providers
-    }
-  }
-})
-</script>

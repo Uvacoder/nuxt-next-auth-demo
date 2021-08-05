@@ -1,0 +1,53 @@
+<template>
+    <div>
+        <Header />
+        <nuxt></nuxt>
+        <Footer />
+    </div>
+</template>
+
+<script>
+import { defineComponent } from '@nuxtjs/composition-api';
+import Header from '~/components/Header.vue';
+import Footer from '~/components/Footer.vue';
+
+export default defineComponent({
+    components: {
+        Header,
+        Footer
+    }
+})
+</script>
+
+<style>
+body {
+  font-family: -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  padding: 0 1rem 1rem 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  color: #333;
+}
+
+li,
+p {
+  line-height: 1.5rem;
+}
+
+a {
+  font-weight: 500;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+iframe {
+  background: #ccc;
+  border: 1px solid #ccc;
+  height: 10rem;
+  width: 100%;
+  border-radius: .5rem;
+  filter: invert(1);
+}
+</style>
